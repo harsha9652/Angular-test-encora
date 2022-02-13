@@ -1,0 +1,51 @@
+<div class="container">
+  <h3 mat-dialog-title>{{action}} Contact</h3>
+  <div *ngIf="action != 'Delete'; else elseDelTemplate">
+    <form [formGroup]="addContact" class="mat-dialog-content" (ngSubmit)="onSubmitContact()">
+
+      <div class="form">
+        <mat-form-field>
+          <input matInput class="form-control" placeholder="First Name" formControlName="firstName" required>
+          <!-- <mat-error *ngIf="submitted && addContactControls.firstName.hasError('required')">First Name Required.
+          </mat-error> -->
+        </mat-form-field>
+      </div>
+
+      <div class="form">
+        <mat-form-field>
+          <input matInput class="form-control" placeholder="Last Name" formControlName="lastName" required>
+          <!-- <mat-error *ngIf="submitted && addContactControls.lastName.hasError('required')">Last Name Required.
+          </mat-error> -->
+        </mat-form-field>
+      </div>
+
+      <div class="form">
+        <mat-form-field>
+          <input matInput class="form-control" placeholder="Phone" formControlName="phone" maxlength="10" required>
+          <!-- <mat-error *ngIf="submitted && addContactControls.phone.hasError('pattern')">Invalid Phone Number.
+          </mat-error> -->
+          <mat-error *ngIf="submitted && addContactControls.phone.hasError('pattern')">
+            It is not a valid mobile number.
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div mat-dialog-actions>
+        <button mat-raised-button color="primary" type="submit">Save</button>
+        <button mat-raised-button color="warn" (click)="onClose()" tabindex="-1">Cancel</button>
+      </div>
+    </form>
+  </div>
+  <ng-template #elseDelTemplate>
+    <h3 mat-dialog-title>Are you sure?</h3>
+    <div mat-dialog-content>
+      Contact: {{local_data.firstName}} &nbsp; {{local_data.lastName}}
+      <p></p>
+    </div>
+
+    <div mat-dialog-actions>
+      <button mat-button color="warn" [mat-dialog-close]="1" (click)="confirmDelete(local_data)">Delete</button>
+      <button mat-button color="basic" (click)="onClose()" tabindex="-1">Cancel</button>
+    </div>
+  </ng-template>
+</div>

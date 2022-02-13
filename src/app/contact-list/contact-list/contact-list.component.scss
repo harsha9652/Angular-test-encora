@@ -1,0 +1,39 @@
+.mat-card {
+    background: #ffffff;
+    color: #6b6d6e;
+    padding-top: 15px;
+    margin: 35px 100px;
+  }
+  .contacts-header {
+    font-size: 18px;
+    font-weight: 400;
+    color: #4e4e4e;
+  }
+  .contacts-container {
+    .filter-container {
+      display: flex;
+      flex-direction: row;
+      align-content: space-between;
+      justify-content: space-between;
+      align-items: center;
+      .button-container {
+        padding: 16px 0;
+        .add-button {
+          margin-left: 8px;
+        }
+      }
+    }
+    .tbl-container {
+      height: 400px;
+      overflow: auto;
+      table {
+          width: 100%;
+          td, th{
+            height: 40px;
+            font-size: 16px;
+            font-weight: 300;
+          }
+      }
+    }
+  }
+  

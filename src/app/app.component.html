@@ -1,0 +1,17 @@
+<div class="base-app">
+    <!-- App common header -->
+    <app-header></app-header>
+    <br>
+    <mat-progress-bar mode="query" *ngIf="loadData"></mat-progress-bar>
+
+    <div class="contact-btn-section" *ngIf="fetchData">
+        <p>(Click Above button to load Contacts)</p>
+        <button mat-raised-button color="primary" (click)="onFetchData()" [disabled]="loadData">Fetch
+            Contact
+            List</button>
+    </div>
+    <div class="body-proxy">
+        <!-- App body loads here -->
+        <router-outlet></router-outlet>
+    </div>
+</div>
